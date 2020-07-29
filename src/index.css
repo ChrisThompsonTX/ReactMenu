@@ -85,4 +85,9 @@ a {
   top: 58px;
   width: 300px;
   transform: translateX(-45%);
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow: hidden;
 }
