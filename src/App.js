@@ -31,7 +31,7 @@ function DropdownMenu() {
 
   function DropdownItem(props) {
     return (
-      <a href="#" className="menu-item">
+      <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
         <span className="icon-button">{props.rightIcon}</span>
@@ -52,7 +52,9 @@ function DropdownMenu() {
             <DropdownItem>My Profile</DropdownItem>
             <DropdownItem
               leftIcon={<CogIcon />}
-              rightIcon={<ChevronIcon />}>
+              rightIcon={<ChevronIcon />}
+              goToMenu="settings"
+              >
               Settings
             </DropdownItem>
             
