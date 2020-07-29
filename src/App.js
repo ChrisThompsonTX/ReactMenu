@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-
+import './index.css'
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 import { ReactComponent as BellIcon } from './icons/bell.svg';
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
@@ -16,9 +16,9 @@ function App() {
       <NavItem icon={<PlusIcon />}/>
       <NavItem icon={<BellIcon />}/>
       <NavItem icon={<MessengerIcon />}/>
+
       <NavItem icon={<CaretIcon />}>
         <DropdownMenu />
-
       </NavItem>
 
     </NavBar>
@@ -28,6 +28,12 @@ function App() {
 function DropdownMenu() {
 
   const [activeMenu, setActiveMenu] = useState('main');
+  const [menuHeight, setMenuHeight] = useState(null);
+
+  function calcHeight(el) {
+    const height = el.offsetHeight;
+    setMenuHeight(height);
+  }
 
   function DropdownItem(props) {
     return (
@@ -40,12 +46,13 @@ function DropdownMenu() {
   }
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" style={{ height: menuHeight }}>
       <CSSTransition 
         in={activeMenu === 'main'} 
         unmountOnExit 
         timeout={500}
         classNames="menu-primary"
+        onEnter={calcHeight}
         >
           <div className="menu">
 
@@ -68,6 +75,14 @@ function DropdownMenu() {
         classNames="menu-secondary"
         >
           <div className="menu">
+            <DropdownItem leftIcon={<ArrowIcon />} goToMenu="main"/>
+            <DropdownItem>Settings</DropdownItem>
+            <DropdownItem>Settings</DropdownItem>
+            <DropdownItem>Settings</DropdownItem>
+            <DropdownItem>Settings</DropdownItem>
+            <DropdownItem>Settings</DropdownItem>
+            <DropdownItem>Settings</DropdownItem>
+            <DropdownItem>Settings</DropdownItem>
             <DropdownItem>Settings</DropdownItem>
           </div>
 
